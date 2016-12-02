@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="Page Description">
+        <meta name="author" content="Mads Ohmsen">
+        <title>{% block title %}Test App{% endblock %}</title>
+
+        <!-- Bootstrap -->
+        <!-- Latest compiled and minified CSS -->
+        <!-- Latest compiled and minified CSS & JS -->
+		<script src="../jquery\jquery-3.1.1.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<link rel="stylesheet" media="screen" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" media="screen" href="../css/stylesheet.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+    <!-- Header -->
+        {% block header %}
+        {% endblock %}
+
+
+    <!-- NavBar -->
+            <nav class="navbar navbar-default" role="navigation">
+            	<!-- Brand and toggle get grouped for better mobile display -->
+            	<div class="navbar-header">
+            		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            			<span class="sr-only">Toggle navigation</span>
+            			<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+            		</button>
+            	</div>
+
+            	<!-- Collect the nav links, forms, and other content for toggling -->
+            	<div class="collapse navbar-collapse navbar-ex1-collapse">
+            		<ul class="nav navbar-nav">
+            			<li><a href="?">Home</a></li>
+            			<li><a href="?page=user&subPage=view">User</a></li>
+            			<li><a href="?page=forum">Forum</a></li>
+            			<li><a href="?page=absence">Absence</a></li>
+                        {% block navbar %}
+
+                        {% endblock %}
+                    </ul>
+
+
+
+					<!-- Login -->
+					<ul class="nav navbar-nav navbar-right">
+						{% if userId is defined %}
+							{% if userId is null %}
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<div class="container col-md-12">
+											<form action="" method="post" class="">
+												<li><input type="text" name="loginUsername" id="" class="form-control" value="{% if username is defined %}{% if username is null %}{% else %}{{ username }}{% endif %}{% endif %}" title="" required="required" placeholder="Brugernavn" ></li>
+												<li><input type="password" name="loginPassword" id="" class="form-control" value="{% if password is defined %}{% if password is null %}{% else %}{{ password }}{% endif %}{% endif %}" title="" required="required" placeholder="Password" ></li>
+												<li><div class="checkbox">
+													<label>
+														<input type="checkbox" name="rememberMe" value="" id=""> Remember Me
+													</label>
+												</div></li>
+												<li><button type="Login" name="loginSubmit" class="btn btn-primary">Submit</button></li>
+
+											</form>
+										</div>
+									</ul>
+								</li>
+							{% else %}
+								<p>username {{ username }}</p>
+								<p>Logget Ind som {{ userId }}</p>
+									<form action="" method="post" class="">
+										<button name="logout" type="submit" class="btn btn-secondary">logout</button>
+									</form>
+							{% endif %}
+						{% endif %}
+
+					</ul>
+            	</div><!-- /.navbar-collapse -->
+            </nav>
+
+	{% if token is defined %}
+		token er sat som: 	{{ token }}
+	{% endif %}
+
+    <!-- content -->
+        {% block content %}
+            <div class="jumbotron">
+            	<div class="container">
+            		<h1>404 Page not found</h1>
+            	</div>
+            </div>
+        {% endblock %}
+
+
+    <!-- Footer -->
+        {% block footer %}
+        {% endblock %}
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>

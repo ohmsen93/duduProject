@@ -1,0 +1,27 @@
+{% extends['layout/layout.html.twig'] %}
+
+{% block title %}
+	absence
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+    	<div class="container">
+    		<table class="table table-hover">
+    			<thead>
+    				<tr>
+    					<th>Name</th>
+    					<th>User</th>
+    					<th>City</th>
+    					<th>ZipCode</th>
+    					<th>Address</th>
+    					<th>Photo</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+				students :{{ students }}
+				</tbody>
+    		</table>
+    	</div>
+    </div>
+{% endblock %}
