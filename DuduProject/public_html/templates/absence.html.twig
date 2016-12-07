@@ -7,11 +7,33 @@
 {% block content %}
     <div class="jumbotron">
     	<div class="container">
-    		<h1>Forum</h1>
-    		<p>Contents...</p>
-    		<p>
-    			<a class="btn btn-primary btn-lg">Learn more</a>
-    		</p>
+    		<table class="table table-hover">
+    			<thead>
+    				<tr>
+    					<th>Name</th>
+    					<th>City</th>
+    					<th>ZipCode</th>
+    					<th>Address</th>
+    					<th>Photo</th>
+						<th>Delete</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+					{% for student in students %}
+						<tr>
+							<td>{{ student.Name }}</td>
+							<td>{{ student.City.Name }}</td>
+							<td>{{ student.ZipCode }}</td>
+							<td>{{ student.Address }}</td>
+							<td>photo</td>
+							<td><form action="" method="post" role="form">
+								<button Name="deleteUser" type="submit" class="btn btn-primary" value="{{ student.User }}">Delete</button>
+							</form></td>
+						</tr>
+					{% endfor %}
+				students :{{ students.Id }}
+				</tbody>
+    		</table>
     	</div>
     </div>
 {% endblock %}

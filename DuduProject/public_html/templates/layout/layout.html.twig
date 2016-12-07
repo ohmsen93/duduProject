@@ -48,7 +48,7 @@
             	<div class="collapse navbar-collapse navbar-ex1-collapse">
             		<ul class="nav navbar-nav">
             			<li><a href="?">Home</a></li>
-            			<li><a href="?page=user">User</a></li>
+            			<li><a href="?page=user&subPage=view">User</a></li>
             			<li><a href="?page=forum">Forum</a></li>
             			<li><a href="?page=absence">Absence</a></li>
                         {% block navbar %}
@@ -56,28 +56,46 @@
                         {% endblock %}
                     </ul>
 
+
+
 					<!-- Login -->
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<div class="container col-md-12">
+						{% if userId is defined %}
+							{% if userId is null %}
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<div class="container col-md-12">
+											<form action="" method="post" class="">
+												<li><input type="text" name="loginUsername" id="" class="form-control" value="{% if username is defined %}{% if username is null %}{% else %}{{ username }}{% endif %}{% endif %}" title="" required="required" placeholder="Brugernavn" ></li>
+												<li><input type="password" name="loginPassword" id="" class="form-control" value="{% if password is defined %}{% if password is null %}{% else %}{{ password }}{% endif %}{% endif %}" title="" required="required" placeholder="Password" ></li>
+												<li><div class="checkbox">
+													<label>
+														<input type="checkbox" name="rememberMe" value="" id=""> Remember Me
+													</label>
+												</div></li>
+												<li><button type="Login" name="loginSubmit" class="btn btn-primary">Submit</button></li>
+
+											</form>
+										</div>
+									</ul>
+								</li>
+							{% else %}
+								<p>username {{ username }}</p>
+								<p>Logget Ind som {{ userId }}</p>
 									<form action="" method="post" class="">
-										<li><input type="text" name="username" id="inputID" class="form-control" value="" title="" required="required" placeholder="Brugernavn" ></li>
-										<li><input type="password" name="password" id="inputID" class="form-control" value="" title="" required="required" placeholder="Password" ></li>
-										<li><button type="Login" class="btn btn-primary">Submit</button></li>
+										<button name="logout" type="submit" class="btn btn-secondary">logout</button>
 									</form>
-								</div>
-							</ul>
-						</li>
+							{% endif %}
+						{% endif %}
+
 					</ul>
             	</div><!-- /.navbar-collapse -->
-
-
             </nav>
 
-
-
+	{% if token is defined %}
+		token er sat som: 	{{ token }}
+	{% endif %}
 
     <!-- content -->
         {% block content %}

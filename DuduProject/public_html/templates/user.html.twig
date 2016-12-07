@@ -16,17 +16,21 @@
 			<div class="jumbotron">
 				<div class="container">
 					<h1>Create Profile</h1>
-					<form action="index.php" method="post" role="form">
+					<form action="index.php?page=user&subPage=view" method="post" role="form">
 						<legend>User Creation</legend>
 
 						<div class="container col-lg-5">
 							<div class="form-group">
+								<input type="text" class="form-control" name="name" id="" placeholder="Name">
 								<input type="email" class="form-control" name="email" id="" placeholder="Email">
 								<input type="password" class="form-control" name="password" id="" placeholder="Password">
+								<input type="password" class="form-control" name="confirmPassword" id="" placeholder="Password">
 								<input type="number" class="form-control" name="phone" id="" placeholder="Phone">
-								<input type="file" class="form-control" name="phone" id="" placeholder="Billede">
-								<button type="submit" name="submit" class="btn btn-primary">Create</button>
-								
+								<input type="text" class="form-control" name="address" id="" placeholder="Address">
+								<input type="number" class="form-control" name="zipcode" id="" placeholder="ZipCode">
+								<input type="text" class="form-control" name="id" id="" placeholder="CardID">
+							    <button type="submit" name="create" class="btn btn-primary">Create</button>
+
 							</div>
 						</div>
 
@@ -44,10 +48,43 @@
 				<div class="jumbotron">
 					<div class="container">
 						<h1>Profile Updater</h1>
-						<p>Contents...</p>
-						<p>
-							<a class="btn btn-primary btn-lg">Learn more</a>
-						</p>
+						<form action="index.php?page=user&subPage=view" method="post" role="form">
+							<legend>User Update</legend>
+
+							<div class="container col-lg-5">
+								<div class="form-group">
+									<input type="text" class="form-control" name="name" id="" value="" placeholder="Name">
+									<input type="number" class="form-control" name="phone" id="" placeholder="Phone">
+									<input type="text" class="form-control" name="address" id="" placeholder="Address">
+									<input type="number" class="form-control" name="zipcode" id="" placeholder="ZipCode">
+									<input type="file" class="form-control" name="photo" id="" placeholder="Photo">
+									<input type="text" class="form-control" name="id" id="" placeholder="CardID">
+									<button type="submit" name="updateInfo" class="btn btn-primary">Update Info</button>
+
+								</div>
+							</div>
+
+
+
+
+
+
+						</form>
+
+						<form action="index.php?page=user&subPage=view" method="post" role="form">
+							<legend>Change Password</legend>
+
+							<div class="container col-lg-5">
+								<div class="form-group">
+
+									<input type="password" class="form-control" name="oldPassword" id="" placeholder="Old Password">
+									<input type="password" class="form-control" name="newPassword" id="" placeholder="New Password">
+									<input type="password" class="form-control" name="newConfirmPassword" id="" placeholder="New Password Confirm">
+
+									<button type="submit" name="changePassword" class="btn btn-primary">Change Password</button>
+
+								</div>
+							</div>
 					</div>
 				</div>
 		{% else %}
