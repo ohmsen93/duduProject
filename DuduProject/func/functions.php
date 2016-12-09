@@ -30,11 +30,11 @@ function tokenReq($userlogin, $userpass){
         header('URL = index.php');
     } else {
         /* Token response*/
-/*
+
         echo "<pre>";
         print_r($array[3]);
         echo "</pre>";
-*/
+
         $_SESSION['token'] = $array[3];
     }
 
@@ -215,12 +215,13 @@ function cityGET($authorization, $zipcode){
     return $jsonresult->Name;
 
 }
-
+/*
 function absenceGET($authorization, $userId){
+
 
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_URL, "http://fravaerswepapi.azurewebsites.net/api/Absences/Percent/$userId" );
+    curl_setopt($curl, CURLOPT_URL, "http://fravaerswepapi.azurewebsites.net/api/Absences/Percent/Student/$userId/" );
     #  curl_setopt($curl, CURLOPT_URL, "http://localhost:1158/api/Students/User/$user/" );
 
     $token = "Authorization: Bearer $authorization";
@@ -235,7 +236,7 @@ function absenceGET($authorization, $userId){
     return $jsonresult;
 
 }
-
+*/
 
 function studentUpdate($authorization, $id, $name, $address, $photo, $zipcode, $user, $studentId){
 

@@ -1,4 +1,5 @@
 <?php
+ini_set('max_execution_time', 300);
 ob_start();
 session_start();
 require_once '../func/functions.php';
@@ -131,15 +132,22 @@ if(isset($_COOKIE['password'])){
 if(isset($_SESSION['message'])){
     echo $_SESSION['message'];
 }
+/*
+$absences = array();
 
-foreach ($students as $key => $value){
+foreach ($students as $key => $student){
+   $userAbsenceId = $student->User;
 
-    $absence = absenceGET($_SESSION['token'], $value->User);
-   # print_r($absence);
+    $absence = absenceGET($_SESSION['token'], $userAbsenceId);
+
+    array_push($absences, $absence);
 }
 
-echo $student->User;
 
+
+
+echo $student->User;
+*/
 echo $template->render(
     array(
         'page' => $page,
