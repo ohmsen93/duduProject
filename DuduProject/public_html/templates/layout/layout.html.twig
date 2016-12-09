@@ -81,10 +81,9 @@
 									</ul>
 								</li>
 							{% else %}
-								<p>username {{ username }}</p>
-								<p>Logget Ind som {{ userId }}</p>
 									<form action="" method="post" class="">
-										<button name="logout" type="submit" class="btn btn-secondary">logout</button>
+											<lable>Logget Ind som {{ student.Name }}: </lable>
+											<button name="logout" type="submit" class="btn btn-secondary">logout</button>
 									</form>
 							{% endif %}
 						{% endif %}
@@ -93,9 +92,7 @@
             	</div><!-- /.navbar-collapse -->
             </nav>
 
-	{% if token is defined %}
-		token er sat som: 	{{ token }}
-	{% endif %}
+
 
     <!-- content -->
         {% block content %}

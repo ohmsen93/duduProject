@@ -76,6 +76,8 @@ if(isset($_POST['logout'])){
 if(isset($_POST['deleteUser'])){
     $userDelEmail = emailGET($_POST['deleteUser'], $_SESSION['token']);
 
+
+
     userDelEmail($userDelEmail, $_SESSION['token']);
 
 
@@ -83,7 +85,6 @@ if(isset($_POST['deleteUser'])){
 
 if(isset($_POST['updateInfo'])){
     $name = $_POST['name'];
-    $phone = $_POST['phone'];
     $address = $_POST['address'];
     $zipcode = $_POST['zipcode'];
     $photo = $_POST['photo'];
@@ -92,7 +93,7 @@ if(isset($_POST['updateInfo'])){
 
     userGET($_SESSION['token']);
 
-    studentUpdate($_SESSION['token'], $id, $name, $address, $photo, $zipcode, $_SESSION['userId']);
+    studentUpdate($_SESSION['token'], $id, $name, $address, $photo, $zipcode, $_SESSION['userId'], $_SESSION['studentId']);
 }
 
 if(isset($_POST['changePassword'])){
@@ -102,21 +103,18 @@ if(isset($_POST['changePassword'])){
 
 if(isset($_SESSION['userId'])){
     $userId = $_SESSION['userId'];
+    $student = studentGET($_SESSION['token'], $_SESSION['userId']);
 } else {
     $userId = Null;
+    $student = Null;
 }
 if(isset($_SESSION['token'])){
     $token = $_SESSION['token'];
     $students = studentsGET($_SESSION['token']);
 
-
-/*
-    echo "<pre>";
-    print_r($students);
-    echo "</pre>";
-*/
 } else {
     $token = Null;
+    $students = null;
 }
 
 if(isset($_COOKIE['username'])){
@@ -130,12 +128,17 @@ if(isset($_COOKIE['password'])){
     $password = Null;
 }
 
-$student = studentGET($_SESSION['token'], $_SESSION['userId']);
+if(isset($_SESSION['message'])){
+    echo $_SESSION['message'];
+}
 
-echo "user id: ".$_SESSION['userId'];
+foreach ($students as $key => $value){
 
-print_r($student);
+    $absence = absenceGET($_SESSION['token'], $value->User);
+   # print_r($absence);
+}
 
+echo $student->User;
 
 echo $template->render(
     array(

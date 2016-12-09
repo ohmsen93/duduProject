@@ -53,14 +53,12 @@
 
 							<div class="container col-lg-5">
 								<div class="form-group">
-									<input type="text" class="form-control" name="name" id="" value="" placeholder="Name">
-									<input type="number" class="form-control" name="phone" id="" placeholder="Phone">
-									<input type="text" class="form-control" name="address" id="" placeholder="Address">
-									<input type="number" class="form-control" name="zipcode" id="" placeholder="ZipCode">
-									<input type="file" class="form-control" name="photo" id="" placeholder="Photo">
-									<input type="text" class="form-control" name="id" id="" placeholder="CardID">
+									<input type="text" class="form-control" name="name" id="" value="{{ student.Name }}" placeholder="Name">
+									<input type="text" class="form-control" name="address" id="" value="{{ student.Address }}" placeholder="Address">
+									<input type="number" class="form-control" name="zipcode" id="" value="{{ student.ZipCode }}" placeholder="ZipCode">
+									<input type="file" class="form-control" name="photo" id="" value="{{ student.Photo }}" placeholder="Photo">
+									<input type="text" class="form-control" name="id" id="" value="{{ student.Id }}" placeholder="CardID">
 									<button type="submit" name="updateInfo" class="btn btn-primary">Update Info</button>
-
 								</div>
 							</div>
 

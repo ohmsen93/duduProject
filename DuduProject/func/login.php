@@ -9,7 +9,7 @@
 
     tokenReq($userLogin, $userPassword);
 
-    userGET($_SESSION['token']);
+    $result = array(userGET($_SESSION['token']));
 
 
 
